@@ -49,8 +49,6 @@ func generateVideo(prompt string, bucketName string) error {
 		return fmt.Errorf("error invoking model: %v", err)
 	}
 
-	// 获取到的arn格式为：arn:aws:bedrock:us-east-1:900212707297:async-invoke/r6cvnsqu7kvr
-	// 获取最后的r6cvnsqu7kvr作为s3的prefix,通过/分解arn得到
 	arn := *invocation.InvocationArn
 	prefix := arn[strings.LastIndex(arn, "/")+1:]
 
